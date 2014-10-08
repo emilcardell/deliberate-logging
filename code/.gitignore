@@ -1,0 +1,21 @@
+# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
+[Bb]in/
+[Oo]bj/
+_release
+
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+
+# ReSharper is a .NET coding add-in
+_ReSharper*
+
+# NuGet
+packages
+*.nupkg
