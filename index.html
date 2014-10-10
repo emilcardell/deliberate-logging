@@ -74,8 +74,8 @@
 						<h2 style="text-align: left;">Selfie</h2>
 						<ul style="list-style:none; margin:0; padding:0;">
 							<li class="fragment" data-fragment-index="1">Huge love for coding</li>
-							<li class="fragment" data-fragment-index="2">Fullstack C#/Node</li>
-							<li class="fragment" data-fragment-index="3">Run obsticle courses</li>
+							<li class="fragment" data-fragment-index="2">Full stack C#/Node</li>
+							<li class="fragment" data-fragment-index="3">Run obstacle courses</li>
 							<li class="fragment" data-fragment-index="4">StarCraft2 gamer</li>
 						</ul>
 					</div>
@@ -86,7 +86,7 @@
 				</section>
 
 				<section>
-					<h3>What data do we have to answere these questions?</h3>
+					<h3>What data do we have to answer these questions?</h3>
 				</section>
 
 				<section>
@@ -107,7 +107,7 @@
 				</section>
 
 				<section>
-					<h3>How can we answere our questions with that data?</h3>
+					<h3>How can we answer our questions with our data?</h3>
 				</section>
 
 				<section>
@@ -157,23 +157,23 @@
 				</section>
 
 				<section>
-					<h3>How do we get from data to visualisation?</h3>
+					<h3>How do we get from data to visualization?</h3>
 				</section>
 
 				<section>
-					<h3>1. Archi - Starting point</h3>
+					<object type="image/svg+xml" data="/images/overview-start.svg">Your browser does not support SVG</object>
 				</section>
 
 				<section>
-					<h3>2. Archi - Simplest posible way (small system)</h3>
+					<object type="image/svg+xml" data="/images/overview-naive.svg">Your browser does not support SVG</object>
 				</section>
 
 				<section>
-					<h3>3. Archi - Doing it right (normal system)</h3>
+					<object type="image/svg+xml" data="/images/overview-normal.svg">Your browser does not support SVG</object>
 				</section>
 
 				<section>
-					<h3>4. Archi - Over doing it (huge system)</h3>
+					<object type="image/svg+xml" data="/images/overview-adv.svg">Your browser does not support SVG</object>
 				</section>
 
 				<section>
@@ -182,7 +182,23 @@
 				</section>
 
 				<section>
-					LogStash example
+					<pre><code data-trim contenteditable>
+					input { stdin { } }
+
+filter {
+  grok {
+    match => { "message" => "%{COMBINEDAPACHELOG}" }
+  }
+  date {
+    match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  }
+}
+
+output {
+  elasticsearch { host => localhost }
+  stdout { codec => rubydebug }
+}
+					</code></pre>
 				</section>
 
 				<section>
@@ -207,7 +223,7 @@
 				</section>
 
 				<section>
-					<h3>Delibirate collecting data</h3>
+					<h3>Deliberate collecting data</h3>
 				</section>
 
 				<section>
