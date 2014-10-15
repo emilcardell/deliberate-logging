@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Elasticsearch.Net;
 using NLog;
 
 namespace FruitDelivery
@@ -21,15 +22,16 @@ namespace FruitDelivery
 
 			while(true)
 			{
-				var fruit = new FruitDelivery() {
+				var fruit = new FruitDelivery()
+				{
 					Id = Guid.NewGuid().ToString(),
-					Name = fruits[rand.Next(0, fruits.Length)],
+					Name = fruits[rand.Next(0, fruits.Count())],
 					Quantity = rand.Next(1, 20)
-				}
+				};
 
 				var indexResponse = client.Index("fruit","fruit",fruit.Id, fruit);
 
-				Thread.Sleep(10000);
+				Thread.Sleep(1000);
 			}
 		}
 	}
