@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿var app = angular.module('FruitApp', []);
 
-namespace FruitSearcher.content
-{
-	public class index
-	{
-	}
-}
+app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
+
+}]);

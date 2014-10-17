@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Elasticsearch.Net;
 using Nancy;
 
 namespace FruitSearcher
@@ -11,6 +12,12 @@ namespace FruitSearcher
 		public MainModule()
 		{
 			Get["/"] = _ => "Hello World!";
+
+			Get["/firstResult"] = _ => {
+				var client = new ElasticsearchClient(); 
+				client.Search("fruit", {})
+
+			};
 		}
 
 	}
