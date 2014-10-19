@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Elasticsearch.Net;
 using Nancy;
+using NElasticsearch;
+using NElasticsearch.Commands;
+using Newtonsoft.Json;
 
 namespace FruitSearcher
 {
@@ -13,11 +15,30 @@ namespace FruitSearcher
 		{
 			Get["/"] = _ => "Hello World!";
 
-			Get["/firstResult"] = _ => {
-				var client = new ElasticsearchClient(); 
-				client.Search("fruit", {})
+			Get["/search"] = _ => {
 
+				var client = new ElasticsearchRestClient("http://localhost:9200");
+				var requestBody = new { 
+					query = new { term = new { Name = "banana" } },
+				    aggs = new {
+						   quantityAggs = new {
+								terms = new  { field = "Quantity" }           
+				
+					   },
+					   nameAggs = new {
+    							terms = new { field = "Name" }           
+				
+					   }
+					}
+ 
+				};
+				var result = client.Search(requestBody, "fruit", null);
+
+
+				return result;
 			};
+
+
 		}
 
 	}
