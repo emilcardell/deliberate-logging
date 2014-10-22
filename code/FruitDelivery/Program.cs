@@ -31,6 +31,8 @@ namespace FruitDelivery
 
 				var indexResponse = client.Index("fruit","fruit",fruit.Id, fruit);
 
+				JsonLogger.LogObject(new { FruitName = fruit.Name, Quantity = fruit.Quantity, ClientName = "FruitDelivery" });
+
 				Thread.Sleep(1000);
 			}
 		}

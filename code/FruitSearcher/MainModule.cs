@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using Nancy;
 using NElasticsearch;
@@ -26,6 +27,11 @@ namespace FruitSearcher
 
 
 				string result;
+
+				if(name.ToLowerInvariant() == "banana")
+				{
+					Thread.Sleep(1000);
+				}
 
 				if(!string.IsNullOrEmpty(quantity) && !string.IsNullOrEmpty(name))
 				{
@@ -76,6 +82,7 @@ namespace FruitSearcher
 						}
 
 					};
+
 					result = client.Search(requestBody, "fruit", null);
 
 				}
