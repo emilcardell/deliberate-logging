@@ -13,29 +13,111 @@ namespace FruitSearcher
 	{
 		public MainModule()
 		{
-			Get["/"] = _ => "Hello World!";
+			Get["/"] = _ => View["content/index"];
 
 			Get["/search"] = _ => {
 
+				string quantity = Request.Query.quantity;
+				string name = Request.Query.name;
 				var client = new ElasticsearchRestClient("http://localhost:9200");
-				var requestBody = new { 
-					query = new { term = new { Name = "banana" } },
-				    aggs = new {
-						   quantityAggs = new {
-								terms = new  { field = "Quantity" }           
-				
-					   },
-					   nameAggs = new {
-    							terms = new { field = "Name" }           
-				
-					   }
-					}
- 
-				};
-				var result = client.Search(requestBody, "fruit", null);
 
+				if(!string.IsNullOrEmpty(quantity) && !string.IsNullOrEmpty(name))
+				{
+					
+					var requestBody = new
+					{
+						filter = new { @bool = new {
+					        must = new object[]
+							{  new {term = new { Quantity = quantity }},
+					             new {term = new { Name = name.ToLowerInvariant() }}
+					        }
+					    } },
+						aggs = new
+						{
+							quantityAggs = new
+							{
+								terms = new { field = "Quantity" }
 
-				return result;
+							},
+							nameAggs = new
+							{
+								terms = new { field = "Name" }
+
+							}
+						}
+
+					};
+					return client.Search(requestBody, "fruit", null);
+
+				} 
+				else if (string.IsNullOrEmpty(quantity) && !string.IsNullOrEmpty(name))
+				{
+					var requestBody = new
+					{
+						filter = new { term = new { Name = name.ToLowerInvariant() } },
+						aggs = new
+						{
+							quantityAggs = new
+							{
+								terms = new { field = "Quantity" }
+
+							},
+							nameAggs = new
+							{
+								terms = new { field = "Name" }
+
+							}
+						}
+
+					};
+					return client.Search(requestBody, "fruit", null);
+
+				}
+				else if (!string.IsNullOrEmpty(quantity) && string.IsNullOrEmpty(name))
+				{
+					var requestBody = new
+					{
+						filter = new { term = new { Quantity = quantity } },
+						aggs = new
+						{
+							quantityAggs = new
+							{
+								terms = new { field = "Quantity" }
+
+							},
+							nameAggs = new
+							{
+								terms = new { field = "Name" }
+
+							}
+						}
+
+					};
+					return client.Search(requestBody, "fruit", null);
+
+				}
+				else
+				{
+					var requestBody = new
+					{
+						aggs = new
+						{
+							quantityAggs = new
+							{
+								terms = new { field = "Quantity" }
+
+							},
+							nameAggs = new
+							{
+								terms = new { field = "Name" }
+
+							}
+						}
+
+					};
+					return client.Search(requestBody, "fruit", null);
+
+				}
 			};
 
 

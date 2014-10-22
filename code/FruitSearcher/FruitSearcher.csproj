@@ -72,9 +72,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\angular.js" />
+    <Content Include="content\apple.jpg" />
+    <Content Include="content\banana.jpg" />
+    <Content Include="content\bootstrap.min.css" />
     <Content Include="content\index.html" />
     <Content Include="content\index.css" />
     <Content Include="content\index.js" />
+    <Content Include="content\mango.jpg" />
+    <Content Include="content\orange.jpg" />
+    <Content Include="content\pear.jpg" />
+    <Content Include="content\pineapple.jpg" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
