@@ -22,8 +22,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
 		var quantity = '';
 		if ($scope.SelectedQuantity) {
 			quantity = $scope.SelectedQuantity.key;
-		}
-			
+		}			
 
 		$http.get("/search?name=" + name + "&quantity=" + quantity ).success(function (data, status, headers, config) {
 			$scope.Result = data.hits.hits.map(function (result) {

@@ -19,3 +19,5 @@ _ReSharper*
 # NuGet
 packages
 *.nupkg
+
+[Ll]ogs/

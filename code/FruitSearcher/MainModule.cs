@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using Nancy;
@@ -20,6 +21,11 @@ namespace FruitSearcher
 				string quantity = Request.Query.quantity;
 				string name = Request.Query.name;
 				var client = new ElasticsearchRestClient("http://localhost:9200");
+				var stopWatch = new Stopwatch();
+				stopWatch.Start();
+
+
+				string result;
 
 				if(!string.IsNullOrEmpty(quantity) && !string.IsNullOrEmpty(name))
 				{
@@ -47,7 +53,7 @@ namespace FruitSearcher
 						}
 
 					};
-					return client.Search(requestBody, "fruit", null);
+					result = client.Search(requestBody, "fruit", null);
 
 				} 
 				else if (string.IsNullOrEmpty(quantity) && !string.IsNullOrEmpty(name))
@@ -70,7 +76,7 @@ namespace FruitSearcher
 						}
 
 					};
-					return client.Search(requestBody, "fruit", null);
+					result = client.Search(requestBody, "fruit", null);
 
 				}
 				else if (!string.IsNullOrEmpty(quantity) && string.IsNullOrEmpty(name))
@@ -93,7 +99,7 @@ namespace FruitSearcher
 						}
 
 					};
-					return client.Search(requestBody, "fruit", null);
+					result = client.Search(requestBody, "fruit", null);
 
 				}
 				else
@@ -115,9 +121,15 @@ namespace FruitSearcher
 						}
 
 					};
-					return client.Search(requestBody, "fruit", null);
+					result = client.Search(requestBody, "fruit", null);
 
 				}
+
+				stopWatch.Stop();
+				long duration = stopWatch.ElapsedMilliseconds;
+				JsonLogger.LogObject(new { QueryDuration = duration, FruitName = name, Quantity = quantity, ClientName = "FruitSearcher" });
+
+				return result;
 			};
 
 
