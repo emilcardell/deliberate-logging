@@ -63,12 +63,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FruitDeliveryFlow.cs" />
+    <Compile Include="FruitSearcherFlow.cs" />
+    <Compile Include="IisFlow.cs" />
+    <Compile Include="LogJsonParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="LogFlow.exe.config" />
-    <None Include="NLog.config" />
+    <None Include="LogFlow.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

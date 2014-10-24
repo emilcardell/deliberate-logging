@@ -56,11 +56,7 @@
 				<section>
 					<h3>How is you application doing?</h3>
 				</section>
-				
-				<section>
-					<h3>Right now?</h3>
-				</section>
-
+			
 				<section>
 					<h3>Is your application behaving the way you designed it?</h3>
 				</section>
@@ -69,24 +65,36 @@
 					<h3>How is the user interaction affecting your application?</h3>
 				</section>
 
+				<section>
+					<h3>Why is this important?</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Customers finds your errors</li>
+						<li class="fragment" data-fragment-index="2">Achieving your goals </li>
+						<li class="fragment" data-fragment-index="3">Make deliberate decisions</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>What's my goal?</h3>
+					<p>Give you tools and inspiration to answer important question about your application.</p>
+				</section>
+
 				<section data-background="/images/memyselfandmud.jpg">
 					<div class="selfie-canvas">
 						<h2 style="text-align: left;">Selfie</h2>
 						<ul style="list-style:none; margin:0; padding:0;">
-							<li class="fragment" data-fragment-index="1">Huge love for coding</li>
-							<li class="fragment" data-fragment-index="2">Full stack C#/Node</li>
-							<li class="fragment" data-fragment-index="3">Run obstacle courses</li>
+							<li class="fragment" data-fragment-index="1">Run obstacle courses</li>
+							<li class="fragment" data-fragment-index="2">Huge love for coding</li>
+							<li class="fragment" data-fragment-index="3">Full stack C#/Node</li>
+							
 							<li class="fragment" data-fragment-index="4">StarCraft2 gamer</li>
 						</ul>
 					</div>
 				</section>
 
-				<section>
-					<h3>Why are these questions so important?</h3>
-				</section>
 
 				<section>
-					<h3>What data do we have to answer these questions?</h3>
+					<h3>What data do we have at our disposal?</h3>
 				</section>
 
 				<section>
@@ -95,6 +103,7 @@
 						<li class="fragment" data-fragment-index="1">User analytics</li>
 						<li class="fragment" data-fragment-index="2">Operational (CPU/Memory...)</li>
 						<li class="fragment" data-fragment-index="3">System log and events</li>
+						<li class="fragment" data-fragment-index="3">Request logs</li>
 					</ul>
 				</section>
 
@@ -103,57 +112,80 @@
 					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
 						<li class="fragment" data-fragment-index="1">Error logs</li>
 						<li class="fragment" data-fragment-index="2">Application events</li>
+						<li class="fragment" data-fragment-index="2">Communication</li>
 					</ul>
 				</section>
 
 				<section>
-					<h3>How can we answer our questions with our data?</h3>
-				</section>
-
-				<section>
-					<h2>Visual all the things!</h2>
+					<h3>How do we collect the data?</h3>
 				</section>
 
 				<section>
 					<h3>General logging</h3>
-					<p>Lots of products</p>
+					<p>New Relic, DynaTrace and lots more</p>
 				</section>
 
 				<section>
 					<h3>Deliberate logging</h3>
-					<p>Combination products</p>					
+					<p>Logging you own</p>					
 				</section>
 
+				<section>
+					<h3>How do we answer questions with data?</h3>
+				</section>
 
+				<section>
+					<h2>VISUAL ALL THE THINGS!</h2>
+				</section>
 
 				<section>
 					<h3>How is you application doing?</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Number of errors</li>
+						<li class="fragment" data-fragment-index="2">Number of important event</li>
+						<li class="fragment" data-fragment-index="3">Server stats</li>
+						<li class="fragment" data-fragment-index="4">Queue lengths</li>
+					</ul>
 				</section>
 
-				<section>
-					<img src="/images/graphana-screenshot.png" />
-				</section>
 
-				<section>
-					<h3>Graphana</h3>
-					<h3>Graphite | InfluxDB</h3>					
-				</section>
 
 				<section>
 					<h3>Is your application behaving the way you designed it?</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Server stats</li>
+						<li class="fragment" data-fragment-index="2">Change in errors</li>
+						<li class="fragment" data-fragment-index="3">Number of relevant events </li>
+						<li class="fragment" data-fragment-index="4">Communication</li>
+					</ul>
 				</section>
 
 				<section>
 					<h3>How is the user interaction affecting your application?</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Server stats</li>
+						<li class="fragment" data-fragment-index="2">Change in errors</li>
+						<li class="fragment" data-fragment-index="3">Number of relevant events </li>
+						<li class="fragment" data-fragment-index="4">Communication</li>
+						<li class="fragment" data-fragment-index="5">Correlations</li>
+					</ul>
 				</section>
 
 				<section>
-					<img src="/images/kibana-screenshot.png" />
+					<h3>Where do we put the data?</h3>
+				</section>
+
+				<section>
+					<h3>Elasticsearch</h3>										
+				</section>
+
+				<section>
+					<h3>The end result</h3>
 				</section>
 
 				<section>
 					<h3>Kibana</h3>
-					<h3>Elasticsearch</h3>										
+					<img src="/images/kibana-screenshot.png" />
 				</section>
 
 				<section>
@@ -175,6 +207,7 @@
 				<section>
 					<object type="image/svg+xml" data="/images/overview-adv.svg">Your browser does not support SVG</object>
 				</section>
+
 
 				<section>
 					<h3>LogStash</h3>
@@ -206,28 +239,65 @@ output {
 					<h3 class="fragment" data-fragment-index="1">LogFlow</h3>
 				</section>
 
+				<section>
+					<h3>Why LogFlow?</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Full power of the C#/CLR</li>
+						<li class="fragment" data-fragment-index="2">Plug in model</li>
+						<li class="fragment" data-fragment-index="3">Fluid restricted DSL</li>
+						<li class="fragment" data-fragment-index="4">Persistent state</li>
+					</ul>					
+				</section>
+
 				<section>					
 				</section>
 
+				<section>
+					<h3>Other interesting tools to check out?</h3>
+					<p>				
+				</section>	
+
+				<section>
+					<h3>Real time</h3>
+					<h3>Graphana / Graphite / InfluxDB</h3>					
+				</section>				
+
+				<section>
+					<img src="/images/graphana-screenshot.png" />
+				</section>
+
+				<section>
+					<h3>Alerts and updates</h3>
+					<h3>Nagios / Hubbot</h3>					
+				</section>				
+
+				<section>
+					<img src="/images/graphana-screenshot.png" />
+				</section>
+			
+
+				<section>
+					<img src="/images/graphana-screenshot.png" />
+				</section>				
+
 				
 				<section>
-					<h3>How is you application doing?</h3>
+					<h3>How is you application doing?</h3>			
+					<h3 class="fragment"  data-fragment-index="1">Is your application behaving the way you designed it?</h3>				
+					<h3 class="fragment"  data-fragment-index="2">How is the user interaction affecting your application?</h3>
+				</section>
+
+
+				<section>
+					<h3>Start collecting data</h3>
 				</section>
 
 				<section>
-					<h3>Is your application behaving the way you designed it?</h3>
+					<h3>BE DELIBERATE!</h3>
 				</section>
 
 				<section>
-					<h3>How is the user interaction affecting your application?</h3>
-				</section>
-
-				<section>
-					<h3>Deliberate collecting data</h3>
-				</section>
-
-				<section>
-					<h3>VISUAL ALL THE THINGS!</h3>
+					<h3>CODE AWESOME STUFF!</h3>
 				</section>
 
 

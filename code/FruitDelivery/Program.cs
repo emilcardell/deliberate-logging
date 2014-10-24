@@ -33,7 +33,7 @@ namespace FruitDelivery
 
 				JsonLogger.LogObject(new { FruitName = fruit.Name, Quantity = fruit.Quantity, ClientName = "FruitDelivery" });
 
-				Thread.Sleep(1000);
+				Thread.Sleep(100);
 			}
 		}
 	}
