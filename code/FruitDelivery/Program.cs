@@ -15,7 +15,7 @@ namespace FruitDelivery
 
 		static void Main(string[] args)
 		{
-			var fruits = new List<string> { "Banana", "Kiwi", "Orange", "Apple", "Pear" };
+			var fruits = new List<string> { "Banana", "Kiwi", "Orange", "Apple", "Pear", "Mango", "Pineapple" };
 			var rand = new Random();
 			var client = new ElasticsearchClient(); 
 

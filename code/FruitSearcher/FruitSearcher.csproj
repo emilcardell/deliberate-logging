@@ -90,6 +90,7 @@
     <Content Include="packages.config" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
@@ -106,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fruit.cs" />
+    <Compile Include="FruitSearcher.cs" />
     <Compile Include="JsonLogger.cs" />
     <Compile Include="MainModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

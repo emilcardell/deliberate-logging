@@ -20,16 +20,16 @@
         <h3>Fruit type</h3>
         <div class="container">
             <span ng-repeat="menuItem in FruitTypes">
-                <a ng-hide="menuItem.Selected" class="label label-default" style="margin-right: 10px;" ng-click="SelectFruitType(menuItem)">{{menuItem.key}} ({{menuItem.doc_count}})</a>
-                <a ng-show="menuItem.Selected" class="label label-success" style="margin-right: 10px;" ng-click="SelectFruitType(menuItem)">{{menuItem.key}} ({{menuItem.doc_count}})</a>
+                <a ng-hide="menuItem.Selected" class="label label-default" style="margin-right: 10px;" ng-click="SelectFruitType(menuItem)">{{menuItem.key}} ({{menuItem.docCount}})</a>
+                <a ng-show="menuItem.Selected" class="label label-success" style="margin-right: 10px;" ng-click="SelectFruitType(menuItem)">{{menuItem.key}} ({{menuItem.docCount}})</a>
             </span>
         </div>
 
         <h3>Package size</h3>
         <div class="container">
             <span ng-repeat="menuItem in Quantities">
-                <a ng-hide="menuItem.Selected" class="label label-default" style="margin-right: 10px;" ng-click="SelectQuantity(menuItem)">{{menuItem.key}} ({{menuItem.doc_count}})</a>
-                <a ng-show="menuItem.Selected" class="label label-success" style="margin-right: 10px;" ng-click="SelectQuantity(menuItem)">{{menuItem.key}} ({{menuItem.doc_count}})</a>
+                <a ng-hide="menuItem.Selected" class="label label-default" style="margin-right: 10px;" ng-click="SelectQuantity(menuItem)">{{menuItem.key}} ({{menuItem.docCount}})</a>
+                <a ng-show="menuItem.Selected" class="label label-success" style="margin-right: 10px;" ng-click="SelectQuantity(menuItem)">{{menuItem.key}} ({{menuItem.docCount}})</a>
             </span>
           
         </div>
@@ -41,9 +41,9 @@
             <div>
                 <div ng-repeat="product in Result" class="col-md-3 col-xs-8 item">
                     <a ng-href="#/product/{{product.id}}">
-                        <img ng-src="/content/{{product.Name}}.jpg" />
+                        <img ng-src="/content/{{product.name}}.jpg" />
                         <div class="info">
-                            <div>{{product.Name}} {{product.Quantity}} pcs</div>
+                            <div>{{product.name}} {{product.quantity}} pcs</div>
                         </div>
                     </a>
                 </div>
