@@ -8,8 +8,7 @@ using LogFlow.Builtins.Inputs;
 using LogFlow.Builtins.Outputs;
 
 namespace FruitLogging
-{
-	
+{	
 	public class FruitSearcherFlow : Flow
 	{
 		

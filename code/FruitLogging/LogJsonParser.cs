@@ -11,6 +11,8 @@ namespace FruitLogging
 {
 	public class LogJsonParser : LogProcessor
 	{
+		//2014-10-28 14:01:44.2069 TRACE {"QueryDuration":520,"FruitName":null,"Quantity":null,"ClientName":"FruitSearcher","Hits":10}
+
 		public override Result Process(Result result)
 		{
 			var logLine = result.Line;
