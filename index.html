@@ -54,42 +54,37 @@
 				</section>
 			
 				<section>
-					<h3>Is your application behaving the way you designed it?</h3>
-				</section>
-
-				<section>
-					<h3>How is the user interaction affecting your application?</h3>
+					<h3>Behaving the way you designed it?</h3>
 				</section>
 
 				<section>
 					<h3>Why is this important?</h3>
 					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
-						<li class="fragment" data-fragment-index="1">Don't want your customers find your errors</li>
-						<li class="fragment" data-fragment-index="2">Know if you are achieving your goals </li>
-						<li class="fragment" data-fragment-index="3">Be able to make deliberate decisions</li>
+						<li class="fragment" data-fragment-index="1">Discovering errors early</li>
+						<li class="fragment" data-fragment-index="2">Achieving your goals </li>
+						<li class="fragment" data-fragment-index="3">Deliberate decisions</li>
 					</ul>
 				</section>
 
 				<section>
 					<h3>What's my goal?</h3>
-					<p>Give you tools and inspiration to answer important question about your application.</p>
 				</section>
 
 				<section data-background="/images/memyselfandmud.jpg">
 					<div class="selfie-canvas">
-						<h2 style="text-align: left;">Selfie</h2>
+						<h3 style="text-align: left;">Selfie</h3>
 						<ul style="list-style:none; margin:0; padding:0;">
 							<li class="fragment" data-fragment-index="1">Run obstacle courses</li>
 							<li class="fragment" data-fragment-index="2">Huge love for coding</li>
 							<li class="fragment" data-fragment-index="3">Full stack C#/Node</li>							
-							<li class="fragment" data-fragment-index="4">Competitive gaming watcher</li>
+							<li class="fragment" data-fragment-index="4">Competitive gaming</li>
 						</ul>
 					</div>
 				</section>
 
 
 				<section>
-					<h3>What data do we have at our disposal?</h3>
+					<h3>Data at our disposal?</h3>
 				</section>
 
 				<section>
@@ -98,7 +93,6 @@
 						<li class="fragment" data-fragment-index="1">User analytics</li>
 						<li class="fragment" data-fragment-index="2">Operational (CPU/Memory...)</li>
 						<li class="fragment" data-fragment-index="3">System log and events</li>
-						<li class="fragment" data-fragment-index="4">Request/Response logs</li>
 					</ul>
 				</section>
 
@@ -109,24 +103,79 @@
 						<li class="fragment" data-fragment-index="2">Application events</li>
 						<li class="fragment" data-fragment-index="3">Communication events</li>
 					</ul>
+					<aside class="notes">
+						This talk is about harnessing the internal resources.
+					</aside>
 				</section>
 
 				<section>
-					<h3>How do we collect the data?</h3>
+					<h3>Collect the data?</h3>
 				</section>
 
 				<section>
-					<h3>Deliberate logging</h3>
-					<p>Adding code to your application</p>
+					<h3>Elasticsearch</h3>
+					<p>http://www.elasticsearch.org/</p>
+					<aside class="notes">
+			        Describe Elasticsearch => Persistent document oriented search. How do install and use it. Runs on JVM. Mention docker.
+			    	</aside>
 				</section>
 
 				<section>
-					<h3>How do we make data useful to us?</h3>
+
+				<pre><code data-trim contenteditable>
+				POST /fruit/_search
+
+{  
+   filter:{  
+      bool:{  
+         must:[  
+            {  
+               term:{  
+                  Quantity:10
+               }
+            },
+            {  
+               term:{  
+                  Name:"banana"
+               }
+            }
+         ]
+      }
+   },
+   aggs:{  
+      quantityAggs:{  
+         terms:{  
+            field:"Quantity"
+         }
+      },
+      nameAggs:{  
+         terms:{  
+            field:"Name"
+         }
+      }
+   }
+}
+</code></pre>
+				</section>
+
+
+				<section>
+					<h3>Make data useful to us?</h3>
 				</section>
 
 				<section>
-					<h2>VISUAL ALL THE THINGS!</h2>
+					<h3>VISUAL ALL THE THINGS!</h3>
 				</section>
+
+				<section>
+					<h3>Kibana</h3>
+					<p>http://www.elasticsearch.org/overview/kibana/</p>
+					<aside class="notes">
+			       	UI over Elasticsearch. Timeseries based. Old version plain html/JS. New runs on JVM.
+			    	</aside>
+				</section>
+
+				<section data-background="/images/kibana-overview.png"></section>
 
 				<section>
 					<h3>How is your application doing?</h3>
@@ -134,50 +183,25 @@
 						<li class="fragment" data-fragment-index="1">Number of errors</li>
 						<li class="fragment" data-fragment-index="2">Number of important events</li>
 						<li class="fragment" data-fragment-index="3">Server stats</li>
-						<li class="fragment" data-fragment-index="4">Queue lengths</li>
 					</ul>
 				</section>
 
-				<section>
-					<h2>Image "How is your application doing"</h2>
-				</section>
+				<section data-background="/images/kibana-how-app-doing.png"></section>
 
 
 				<section>
-					<h3>Is your application behaving the way you designed it?</h3>
+					<h3>Behaving the way you designed it?</h3>
 					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
-						<li class="fragment" data-fragment-index="1">Changes in server stats</li>
-						<li class="fragment" data-fragment-index="2">Changes in number of errors</li>
-						<li class="fragment" data-fragment-index="3">Changes number of relevant events </li>
+						<li class="fragment" data-fragment-index="1">Changes in number of errors</li>
+						<li class="fragment" data-fragment-index="2">Changes number of relevant events </li>
+						<li class="fragment" data-fragment-index="3">Response times</li>
 						<li class="fragment" data-fragment-index="4">Communication events</li>
+						<li class="fragment" data-fragment-index="5">Changes in server stats</li>
 					</ul>
 				</section>
 
-				<section>
-					<h2>Image "Is your application behaving the way you designed it?"</h2>
-				</section>
-
-				<section>
-					<h3>How is the user interaction affecting your application?</h3>
-					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
-						<li class="fragment" data-fragment-index="1">Response times</li>
-						<li class="fragment" data-fragment-index="2">Number of relevant events </li>
-						<li class="fragment" data-fragment-index="3">Communication events</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Image "How is the user interaction affecting your application?"</h2>
-				</section>
-
-
-				<section>
-					<h3>Where do we put the data?</h3>
-					<p>To get all these cool graphs.</p>
-				</section>
-
-				<section>
-					<h3>Elasticsearch</h3>										
+				<section data-background="/images/kibana-design.png">
+					
 				</section>
 
 				<section>
@@ -201,8 +225,7 @@
 				</section>
 
 				<section>
-					<h3>We have our logs in files. Now what?</h3>
-					<p>How do we get the data into Elasticsearch</p>
+					<h3>Now what?</h3>
 				</section>
 
 
@@ -234,6 +257,9 @@ output {
 				<section>
 					<h3 style="text-decoration: line-through;">LogStash</h3>
 					<h3 class="fragment" data-fragment-index="1">LogFlow</h3>
+					<aside class="notes">
+			       		It's a framework for collecting log data, transforming the data and storing it.
+			    	</aside>
 				</section>
 
 				<section>
@@ -250,19 +276,18 @@ output {
 				</section>
 
 				<section>
-					<h3>Other interesting tools to check out?</h3>
-					<p>				
+					<h3>Other tools?</h3>								
+				</section>
+				<section>
+					<h3>More log collecting</h3>
+					<p>Statsd<p> 					
 				</section>	
 
 				<section>
-					<h3>Real time graphs</h3>
+					<h3>Real time</h3>
 					<p class="fragment" data-fragment-index="1">Graphana<p> 
 					<p class="fragment" data-fragment-index="2">Graphite or InfluxDB</p>				
 				</section>				
-
-				<section>
-					<img src="/images/graphana-screenshot.png" />
-				</section>
 
 				<section>
 					<h3>Alerts and updates</h3>
@@ -293,23 +318,26 @@ output {
 
 				<section>
 					<h3>Links</h3>
+					<div style="text-align: left;">
 					<p>Elasticsearch - http://www.elasticsearch.org/</p>
 					<p>Kibana - http://www.elasticsearch.org/overview/kibana/</p>
 					<p>LogFlow - https://github.com/LogFlow/LogFlow</p>
+					<p>Statsd - https://github.com/etsy/statsd/</p>
 					<p>Graphana - http://grafana.org/</p>
 					<p>Graphite - http://graphite.wikidot.com/</p>
 					<p>InfluxDB - http://influxdb.com/</p>
 					<p>Nagios - http://www.nagios.org/</p>
 					<p>Sensu - http://sensuapp.org/</p>
 					<p>Hubbot - https://hubot.github.com/</p>
+					</div>
 				</section>
 
 
 
 				<section>
-					<h1>Farewell</h1>
-					<h3>Emil Cardell | @emilcardell</h3>
-					<h5>https://github.com/LogFlow/LogFlow</h5>
+					<h3>Farewell</h3>
+					<p>Emil Cardell | @emilcardell</p>
+					<p>https://github.com/LogFlow/LogFlow</p>
 				</section>
 
 			</div>

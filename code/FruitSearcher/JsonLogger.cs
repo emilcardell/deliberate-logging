@@ -13,5 +13,10 @@ namespace FruitSearcher
 		public static void LogObject(object obj) {
 			logger.Trace(JsonConvert.SerializeObject(obj));			
 		}
+
+		public static void LogErrorObject(object obj)
+		{
+			logger.Error(JsonConvert.SerializeObject(obj));
+		}
 	}
 }

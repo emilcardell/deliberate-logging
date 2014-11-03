@@ -27,7 +27,7 @@ namespace FruitSearcher
 
 				stopWatch.Stop();
 				long duration = stopWatch.ElapsedMilliseconds;
-				JsonLogger.LogObject(new { QueryDuration = duration, FruitName = name, Quantity = quantity, ClientName = "FruitSearcher", Hits = result.hits.hits.Count() });
+				JsonLogger.LogObject(new { QueryDuration = duration, FruitName = name, Quantity = quantity, EventName = "FruitSearch" });
 
 				return Response.AsJson(result);
 			};

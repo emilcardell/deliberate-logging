@@ -143,3 +143,20 @@ body {
 .reveal .selfie-canvas ul {
   width: 20em;
 }
+
+.reveal p {
+  font-size: 0.80em;
+}
+
+.reveal h3 {
+  font-size: 1.2em;
+}
+
+.reveal li {
+  font-size: 0.80em;
+}
+
+.reveal pre code {
+  max-height: none;
+  margin-top: -5%;
+}

@@ -23,6 +23,7 @@ namespace FruitSearcher
 
 			if(!string.IsNullOrEmpty(quantity) && quantity == "10")
 			{
+				JsonLogger.LogErrorObject(new { FruitName = name, Quantity = quantity, EventName = "FruitSearchError", Hits = result.hits.hits.Count() });
 				throw new Exception("Something went horribly wrong!");
 			}
 

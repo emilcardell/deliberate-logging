@@ -63,7 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FruitDeliveryLogReader.cs" />
     <Compile Include="FruitSearcherFlow.cs" />
+    <Compile Include="IISDateFix.cs" />
     <Compile Include="IisFlow.cs" />
     <Compile Include="LogJsonParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
