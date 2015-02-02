@@ -11,6 +11,7 @@ namespace FruitLogging
 {
 	public class FruitDeliveryLogReader : Flow
 	{
+		/*
 		public FruitDeliveryLogReader()
 		{
 			var elasticConfiguration = new ElasticSearchConfiguration();
@@ -21,6 +22,6 @@ namespace FruitLogging
 				.Then(new LogJsonParser())
 				.ToOutput(new ElasticSearchOutput(elasticConfiguration));
 			
-		}
+		}*/
 	}
 }

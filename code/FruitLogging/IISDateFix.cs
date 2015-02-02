@@ -12,7 +12,7 @@ namespace FruitLogging
 		public override Result Process(Result result)
 		{
 			var value = result.EventTimeStamp.Value;
-			var dateResult = value.AddMilliseconds(1);
+			var dateResult = value.AddMilliseconds(5);
 			result.EventTimeStamp = dateResult;
 			return result;
 		}

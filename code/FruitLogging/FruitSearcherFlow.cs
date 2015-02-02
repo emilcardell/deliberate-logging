@@ -12,7 +12,7 @@ namespace FruitLogging
 	public class FruitSearcherFlow : Flow
 	{
 		
-		
+		/*
 		public FruitSearcherFlow ()
 		{
 			var elasticConfiguration = new ElasticSearchConfiguration();
@@ -24,7 +24,7 @@ namespace FruitLogging
 				.Then(new IISDateFix())
 				.ToOutput(new ElasticSearchOutput(elasticConfiguration));
 			
-		}
+		}*/
 
 	}
 }

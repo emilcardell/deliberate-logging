@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="FruitDeliveryLogReader.cs" />
     <Compile Include="FruitSearcherFlow.cs" />
+    <Compile Include="GetAllMyLogs.cs" />
     <Compile Include="IISDateFix.cs" />
     <Compile Include="IisFlow.cs" />
     <Compile Include="LogJsonParser.cs" />
