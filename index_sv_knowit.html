@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Deliberate logging</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/humble-anarchist.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h3>Loghantering med Kibana och LogFlow i .Net</h3>
+					<p>
+						<small>Emil Cardell | @emilcardell </a></small>
+					</p>
+				</section>
+
+				<section>
+					<h3>Logghantering i .net</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Filosofi</li>
+						<li class="fragment" data-fragment-index="2">Arkitektur</li>
+						<li class="fragment" data-fragment-index="3">Kod</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Detta kommer jag INTE prata om</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Djupdykning i Elasticsearch</li>
+						<li class="fragment" data-fragment-index="2">Graphana med vänner</li>
+						<li class="fragment" data-fragment-index="3">Vad du behöver mäta</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>"Om något kan gå fel så kommer det förr eller senare göra det"</h3>
+				</section>
+
+				<section>
+					<h3>"Om allting ser ut att gå bra har du uppenbarligen missat nåt."</h3>
+				</section>
+
+				<section>
+					<h3>"Allt suger!"</h3>
+				</section>
+
+				<section>
+					<h3>Hur vet vi när det blivit fel?</h3>
+				</section>
+
+				<section>
+					<h3>Vad orsakade felet?</h3>
+				</section>
+			
+				<section>
+					<h3>Hur vet vi vad vi har missat?</h3>
+				</section>
+
+				<section>
+					<h3>Hur vet vi vad som suger?</h3>
+				</section>
+
+				<section>
+					<h3>Varför är dessa frågor så viktigta?</h3>
+					<ul style="list-style:none; margin:0; padding:0;">
+						<li class="fragment" data-fragment-index="1">Genomtänkta beslut</li>
+						<li class="fragment" data-fragment-index="2">Minimera förluster</li>
+					</ul>
+				</section>
+
+				<section data-background="/images/memyselfandmud.jpg">
+					<div class="selfie-canvas">
+						<h3 style="text-align: left;">Kodanarkist</h3>
+						<ul style="list-style:none; margin:0; padding:0;">
+							<li class="fragment" data-fragment-index="1">C#, Node, Python, PHP</li>
+							<li class="fragment" data-fragment-index="2">Windows, OSX, Linux</li>
+							<li class="fragment" data-fragment-index="3">SQL, NOSQL, Queues</li>
+						</ul>
+					</div>
+				</section>
+				
+				<section>
+					<h3>Vilka resurser har vi tillgängliga?</h3>
+				</section>
+
+				<section>
+					<h3>External resurser</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">User analytics</li>
+						<li class="fragment" data-fragment-index="2">Operational (CPU/Memory...)</li>
+						<li class="fragment" data-fragment-index="3">System log and events</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Interna resurser</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Error loggar</li>
+						<li class="fragment" data-fragment-index="2">Application events</li>
+						<li class="fragment" data-fragment-index="3">Kommunikation</li>
+					</ul>
+					
+				</section>
+
+				<section>
+					<h3>Hur kan vi använda oss all denna data?</h3>
+				</section>  
+
+				<section>
+					<img style="border:none; box-shadow: none; transform: scale(2);" src="/images/allthethings.jpg" />
+				</section>
+
+
+				<section>
+					<h3>Vart ska vi spara all datan?</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">MS SQL</li>
+						<li class="fragment" data-fragment-index="2">Hadoop</li>
+						<li class="fragment" data-fragment-index="3">Graphite / InfluxDB</li>
+					</ul>
+				</section>
+
+
+
+				<section>
+					<h3>Elasticsearch</h3>
+					<p>http://www.elasticsearch.org/</p>
+				</section>
+
+				<section>
+
+				<pre><code data-trim contenteditable>
+				POST /fruit/_search
+
+{  
+   filter:{  
+      bool:{  
+         must:[  
+            {  
+               term:{  
+                  Quantity:10
+               }
+            },
+            {  
+               term:{  
+                  Name:"banana"
+               }
+            }
+         ]
+      }
+   },
+   aggs:{  
+      quantityAggs:{  
+         terms:{  
+            field:"Quantity"
+         }
+      },
+      nameAggs:{  
+         terms:{  
+            field:"Name"
+         }
+      }
+   }
+}
+</code></pre>
+				</section>
+
+
+				<section>
+					<h3>Hur kan vi visualisera all datan?</h3>
+				</section>
+				
+
+				<section data-background="/images/kibana-overview.png"></section>
+				
+				<section>
+					<h3>Kibana</h3>
+					<p>http://www.elasticsearch.org/overview/kibana/</p>
+					<aside class="notes">
+			       	UI over Elasticsearch. Timeseries based. Old version plain html/JS. New runs on JVM.
+			    	</aside>
+				</section>
+
+				
+
+				<section>
+					<h3>Intressanta datapunkter</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Antal fel</li>
+						<li class="fragment" data-fragment-index="2">Antal viktiga händelser</li>
+						<li class="fragment" data-fragment-index="3">Server stats</li>
+						<li class="fragment" data-fragment-index="4">Response times</li>
+						<li class="fragment" data-fragment-index="5">Kommunikation</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h3>Arkitektur?</h3>
+				</section>
+
+				<section>
+					<object type="image/svg+xml" data="/images/overview-start.svg">Your browser does not support SVG</object>
+				</section>
+
+				<section>
+					<object type="image/svg+xml" data="/images/overview-naive.svg">Your browser does not support SVG</object>
+				</section>
+
+				<section>
+					<object type="image/svg+xml" data="/images/overview-normal.svg">Your browser does not support SVG</object>
+				</section>
+
+				<section>
+					<object type="image/svg+xml" data="/images/overview-adv.svg">Your browser does not support SVG</object>
+				</section>
+
+				<section>
+					<h3>Hur får vi in data i Elasticsearch?</h3>
+				</section>
+
+				<section>
+					<h3>Enklaste möjliga</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">NLog</li>
+						<li class="fragment" data-fragment-index="2">Log4Net</li>
+						<li class="fragment" data-fragment-index="3">Serilog</li>
+					</ul>											
+				</section>
+
+
+				<section>
+					<h3>LogStash</h3>
+					<h3>&nbsp;</h3>												
+				</section>
+
+				<section>
+					<pre><code data-trim contenteditable>
+					input { stdin { } }
+
+filter {
+  grok {
+    match => { "message" => "%{COMBINEDAPACHELOG}" }
+  }
+  date {
+    match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  }
+}
+
+output {
+  elasticsearch { host => localhost }
+  stdout { codec => rubydebug }
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h3 style="text-decoration: line-through;">LogStash</h3>
+					<h3 class="fragment" data-fragment-index="1">LogFlow</h3>
+					<aside class="notes">
+			       		It's a framework for collecting log data, transforming the data and storing it.
+			    	</aside>
+				</section>
+
+				<section>
+					<h3>Varför LogFlow?</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Full power of the C#/CLR</li>
+						<li class="fragment" data-fragment-index="2">Plug in based model</li>
+						<li class="fragment" data-fragment-index="3">Fluid restricted DSL</li>
+						<li class="fragment" data-fragment-index="4">Persistent state</li>
+					</ul>					
+				</section>
+
+				<section>					
+				</section>
+
+				<section>
+					<h3>Hur jag jag ta resan vidare?</h3>								
+				</section>
+				
+				<section>
+					<h3>Statistik</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Metrics.Net</li>
+						<li class="fragment" data-fragment-index="2">StatsD</li>
+					</ul>	 					
+				</section>	
+
+				<section>
+					<h3>Realtids grafer</h3>
+					<p class="fragment" data-fragment-index="1">Graphana<p> 
+					<p class="fragment" data-fragment-index="2">Graphite or InfluxDB</p>				
+				</section>				
+
+				<section>
+					<h3>Notifieringar och uppdateringar</h3>
+					<p class="fragment" data-fragment-index="1">Nagios<p> 
+					<p class="fragment" data-fragment-index="2">Sensu</p>										
+				</section>
+
+				<section>
+					<h3>Hipser varning</h3>
+					<p class="fragment" data-fragment-index="1">Hubbot<p> 
+					<p class="fragment" data-fragment-index="2">Slack</p>										
+				</section>								
+
+
+
+				<section>
+					<h3>Börja samla data</h3>
+				</section>
+
+				<section>
+					<h3>Ta genomtänka beslut!</h3>
+					<p>Låt inte slumpen avgöra</p>
+				</section>
+
+				<section>
+					<h3>Koda grymma grejer!</h3>
+				</section>
+
+				<section>
+					<h3>Roger Wilson | @captain_jinx</h3>	
+				</section>
+
+				<section>
+					<h3>Links</h3>
+					<div style="text-align: left;">
+					<p>Elasticsearch - http://www.elasticsearch.org/</p>
+					<p>Kibana - http://www.elasticsearch.org/overview/kibana/</p>
+					<p>LogFlow - https://github.com/LogFlow/LogFlow</p>
+					<p>Statsd - https://github.com/etsy/statsd/</p>
+					<p>Graphana - http://grafana.org/</p>
+					<p>Graphite - http://graphite.wikidot.com/</p>
+					<p>InfluxDB - http://influxdb.com/</p>
+					<p>Nagios - http://www.nagios.org/</p>
+					<p>Sensu - http://sensuapp.org/</p>
+					<p>Hubbot - https://hubot.github.com/</p>
+					</div>
+				</section>
+
+
+
+				<section>
+					<h3>Väl mött</h3>
+					<p>Emil Cardell | @emilcardell</p>
+					<p>https://github.com/LogFlow/LogFlow</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

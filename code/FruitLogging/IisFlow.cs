@@ -19,10 +19,10 @@ namespace FruitLogging
 			elasticConfiguration.IndexNameFormat = @"\i\i\s\l\o\g\s\-yyyyMM";
 
 			CreateProcess()
-				.FromInput(new FileInput(@"C:\inetpub\logs\LogFiles\W3SVC1\*.log", System.Text.Encoding.UTF8, true))
+				.FromInput(new FileInput(@"C:\inetpub\logs\LogFiles\W3SVC1\*.log", System.Text.Encoding.UTF8, true))				
 				.Then(new IISLogProcessor())
-				.Then(new IISDateFix())				
-				.ToOutput(new ElasticSearchOutput(elasticConfiguration));
+				.Then(new InfluxDbOutput())
+				.Then(new ElasticSearchOutput(elasticConfiguration));
 		}
 	}	
 }
