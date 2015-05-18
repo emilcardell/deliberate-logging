@@ -43,82 +43,90 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h3>Loghantering med Kibana och LogFlow i .Net</h3>
+					<h3>Log management with LogFlow, ElasticSearch, Kibana and friends in .net</h3>
 					<p>
 						<small>Emil Cardell | @emilcardell </a></small>
 					</p>
 				</section>
 
 				<section>
-					<h3>Logghantering i .net</h3>
-					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
-						<li class="fragment" data-fragment-index="1">Filosofi</li>
-						<li class="fragment" data-fragment-index="2">Arkitektur</li>
-						<li class="fragment" data-fragment-index="3">Kod</li>
-					</ul>
+					<h3>"Anything that can possibly go wrong, does."<h3>
 				</section>
 
 				<section>
-					<h3>Detta kommer jag INTE prata om</h3>
-					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
-						<li class="fragment" data-fragment-index="1">Djupdykning i Elasticsearch</li>
-						<li class="fragment" data-fragment-index="2">Vad du behöver mäta</li>
-					</ul>
+					<h3>"When things are going well, something will go wrong."<h3>
 				</section>
 
 				<section>
-					<h3>"Om något kan gå fel så kommer det förr eller senare göra det"</h3>
+					<h3>"You never run out of things that can go wrong."<h3>
 				</section>
 
 				<section>
-					<h3>"Om allting ser ut att gå bra har du uppenbarligen missat nåt."</h3>
-				</section>
-
-				<section>
-					<h3>"Allt suger!"</h3>
-				</section>
-
-				<section>
-					<h3>Hur vet vi när det blivit fel?</h3>
-				</section>
-
-				<section>
-					<h3>Vad orsakade felet?</h3>
-				</section>
-			
-				<section>
-					<h3>Hur vet vi vad vi har missat?</h3>
-				</section>
-
-				<section>
-					<h3>Hur vet vi vad som suger?</h3>
-				</section>
-
-				<section>
-					<h3>Varför är dessa frågor så viktigta?</h3>
-					<ul style="list-style:none; margin:0; padding:0;">
-						<li class="fragment" data-fragment-index="1">Genomtänkta beslut</li>
-						<li class="fragment" data-fragment-index="2">Minimera förluster</li>
-					</ul>
+					<h3>"Everything sucks!"</h3>
 				</section>
 
 				<section data-background="/images/memyselfandmud.jpg">
 					<div class="selfie-canvas">
-						<h3 style="text-align: left;">Kodanarkist</h3>
+						<h3 style="text-align: left;">Selfie</h3>
 						<ul style="list-style:none; margin:0; padding:0;">
-							<li class="fragment" data-fragment-index="1">C#, Node, Python, PHP</li>
-							<li class="fragment" data-fragment-index="2">Windows, OSX, Linux</li>
-							<li class="fragment" data-fragment-index="3">SQL, NOSQL, Queues</li>
+							<li class="fragment" data-fragment-index="1">Run obstacle courses</li>
+							<li class="fragment" data-fragment-index="2">Code Anarchist</li>							
+							<li class="fragment" data-fragment-index="3">Billogram</li>
 						</ul>
 					</div>
 				</section>
-				
+
+
 				<section>
-					<h3>Vilka resurser har vi tillgängliga?</h3>
+					<h3>Log management in .net</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Philosophy</li>
+						<li class="fragment" data-fragment-index="2">Architecture</li>
+						<li class="fragment" data-fragment-index="3">Code</li>
+					</ul>
 				</section>
 
 				<section>
-					<h3>External resurser</h3>
+					<h3>Things I'm not going to talk about</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Querying and indexing Elasticsearch</li>
+						<li class="fragment" data-fragment-index="2">What you should measure</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>How is your application doing?</h3>
+				</section>
+
+				<section>
+					<h3>What is not working?</h3>
+				</section>
+
+				<section>
+					<h3>What are things that can go wrong?</h3>
+				</section>
+
+				<section>
+					<h3>How do we know what sucks?</h3>
+				</section>
+
+				<section>
+					<h3>Why are these questions important?</h3>
+					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
+						<li class="fragment" data-fragment-index="1">Discovering errors</li>
+						<li class="fragment" data-fragment-index="2">Deliberate decisions</li>
+					</ul>
+				</section>
+
+			
+
+
+				<section>
+					<h3>Data at our disposal?</h3>
+				</section>
+
+				<section>
+					<h3>External resources</h3>
 					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
 						<li class="fragment" data-fragment-index="1">User analytics</li>
 						<li class="fragment" data-fragment-index="2">Operational (CPU/Memory...)</li>
@@ -127,34 +135,36 @@
 				</section>
 
 				<section>
-					<h3>Interna resurser</h3>
+					<h3>Application resources</h3>
 					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
-						<li class="fragment" data-fragment-index="1">Error loggar</li>
+						<li class="fragment" data-fragment-index="1">Error logs</li>
 						<li class="fragment" data-fragment-index="2">Application events</li>
-						<li class="fragment" data-fragment-index="3">Kommunikation</li>
+						<li class="fragment" data-fragment-index="3">Communication events</li>
 					</ul>
-					
+					<aside class="notes">
+						This talk is about harnessing the internal resources.
+					</aside>
 				</section>
 
 				<section>
-					<h3>Hur kan vi använda oss all denna data?</h3>
+					<h3>What do we want to do with all this data?</h3>
 				</section>  
 
 				<section>
 					<img style="border:none; box-shadow: none; transform: scale(2);" src="/images/allthethings.jpg" />
 				</section>
 
+				<section>
+					<h3>Where do we collect the data?</h3>
+				</section>
 
 				<section>
-					<h3>Vart ska vi spara all datan?</h3>
+					<h3>Where can we store the data?</h3>
 					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
 						<li class="fragment" data-fragment-index="1">MS SQL</li>
 						<li class="fragment" data-fragment-index="2">Hadoop</li>
-						<li class="fragment" data-fragment-index="3">Graphite / InfluxDB</li>
 					</ul>
 				</section>
-
-
 
 				<section>
 					<h3>Elasticsearch</h3>
@@ -199,38 +209,46 @@
 </code></pre>
 				</section>
 
+				<section>
+					<h3>InfluxDB</h3>
+					<p>http://influxdb.com/</p>
+				</section>
 
 				<section>
-					<h3>Hur kan vi visualisera all datan?</h3>
-				</section>
-				
 
-				<section data-background="/images/kibana-overview.png"></section>
-				
+				<pre><code data-trim contenteditable>
+				select percentile(value, 95) from response_times group by time(30s);
+				</code></pre>
+				</section>
+
+				<section>
+					<h3>How do we make the data visual?</h3>
+				</section>
+
 				<section>
 					<h3>Kibana</h3>
-					<p>http://www.elasticsearch.org/overview/kibana/</p>
-					<aside class="notes">
-			       	UI over Elasticsearch. Timeseries based. Old version plain html/JS. New runs on JVM.
-			    	</aside>
+					<p>https://www.elastic.co/products/kibana</p>
 				</section>
 
-				
+				<section>
+					<h3>Graphana</h3>
+					<p>http://grafana.org/</p>
+				</section>
 
 				<section>
-					<h3>Intressanta datapunkter</h3>
+					<h3>Things to measure</h3>
 					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
-						<li class="fragment" data-fragment-index="1">Antal fel</li>
-						<li class="fragment" data-fragment-index="2">Antal viktiga händelser</li>
+						<li class="fragment" data-fragment-index="1">Errors</li>
+						<li class="fragment" data-fragment-index="2">Important events</li>
 						<li class="fragment" data-fragment-index="3">Server stats</li>
 						<li class="fragment" data-fragment-index="4">Response times</li>
-						<li class="fragment" data-fragment-index="5">Kommunikation</li>
+						<li class="fragment" data-fragment-index="5">Communication events</li>
 					</ul>
 				</section>
 
 
 				<section>
-					<h3>Arkitektur?</h3>
+					<h3>Architecture?</h3>
 				</section>
 
 				<section>
@@ -250,16 +268,7 @@
 				</section>
 
 				<section>
-					<h3>Hur får vi in data i Elasticsearch?</h3>
-				</section>
-
-				<section>
-					<h3>Enklaste möjliga</h3>
-					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
-						<li class="fragment" data-fragment-index="1">NLog</li>
-						<li class="fragment" data-fragment-index="2">Log4Net</li>
-						<li class="fragment" data-fragment-index="3">Serilog</li>
-					</ul>											
+					<h3>How to we extract the data?</h3>
 				</section>
 
 
@@ -291,13 +300,10 @@ output {
 				<section>
 					<h3 style="text-decoration: line-through;">LogStash</h3>
 					<h3 class="fragment" data-fragment-index="1">LogFlow</h3>
-					<aside class="notes">
-			       		It's a framework for collecting log data, transforming the data and storing it.
-			    	</aside>
 				</section>
 
 				<section>
-					<h3>Varför LogFlow?</h3>
+					<h3>Why LogFlow?</h3>
 					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
 						<li class="fragment" data-fragment-index="1">Full power of the C#/CLR</li>
 						<li class="fragment" data-fragment-index="2">Plug in based model</li>
@@ -310,52 +316,40 @@ output {
 				</section>
 
 				<section>
-					<h3>Hur jag jag ta resan vidare?</h3>								
-				</section>
-				
-				<section>
-					<h3>Statistik</h3>
-					<ul style="list-style:none; margin:0; padding:0; text-align: center;">
-						<li class="fragment" data-fragment-index="1">Metrics.Net</li>
-						<li class="fragment" data-fragment-index="2">StatsD</li>
-					</ul>	 					
-				</section>	
-
-				<section>
-					<h3>Realtids grafer</h3>
-					<p class="fragment" data-fragment-index="1">Graphana<p> 
-					<p class="fragment" data-fragment-index="2">Graphite or InfluxDB</p>				
+					<h3>Server stats</h3>
+					<p>StatsD<p> 					
 				</section>				
 
 				<section>
-					<h3>Notifieringar och uppdateringar</h3>
+					<h3>Alerts</h3>
 					<p class="fragment" data-fragment-index="1">Nagios<p> 
-					<p class="fragment" data-fragment-index="2">Sensu</p>										
+					<p class="fragment" data-fragment-index="2">Sensu</p>						
 				</section>
 
 				<section>
-					<h3>Hipser varning</h3>
-					<p class="fragment" data-fragment-index="1">Hubbot<p> 
-					<p class="fragment" data-fragment-index="2">Slack</p>										
+					<h3>Hipster</h3>
+					<p class="fragment" data-fragment-index="1">Slack<p> 
+					<p class="fragment" data-fragment-index="2">Hubot</p>						
 				</section>								
 
 
 
 				<section>
-					<h3>Börja samla data</h3>
+					<h3>Start collecting data</h3>
 				</section>
 
 				<section>
-					<h3>Ta genomtänka beslut!</h3>
-					<p>Låt inte slumpen avgöra</p>
+					<h3>BE DELIBERATE!</h3>
+					<p>Don't be a slave to randomness</p>
 				</section>
 
 				<section>
-					<h3>Koda grymma grejer!</h3>
+					<h3>CODE AWESOME STUFF!</h3>
 				</section>
 
 				<section>
-					<h3>Roger Wilson | @captain_jinx</h3>	
+					<p>Big thanks to LogFlow co creator</p>	
+					<h3>Roger Wilson | @captain_jinx</h3>
 				</section>
 
 				<section>
@@ -377,7 +371,7 @@ output {
 
 
 				<section>
-					<h3>Väl mött</h3>
+					<h3>Farewell</h3>
 					<p>Emil Cardell | @emilcardell</p>
 					<p>https://github.com/LogFlow/LogFlow</p>
 				</section>
